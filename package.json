@@ -17,5 +17,9 @@
     "url": "https://github.com/kjirou/social-game-rewards-backend/issues"
   },
   "homepage": "https://github.com/kjirou/social-game-rewards-backend#readme",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.3"
+  }
 }
