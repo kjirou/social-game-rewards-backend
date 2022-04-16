@@ -1,0 +1,20 @@
+{
+  "name": "social-game-rewards-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjirou/social-game-rewards-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kjirou/social-game-rewards-backend/issues"
+  },
+  "homepage": "https://github.com/kjirou/social-game-rewards-backend#readme"
+}
