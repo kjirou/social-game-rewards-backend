@@ -1,6 +1,6 @@
 {
   "name": "social-game-rewards-backend",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,11 @@
     "url": "git+https://github.com/kjirou/social-game-rewards-backend.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "kjirou (https://github.com/kjirou)",
+  "license": "SEE LICENSE IN https://github.com/kjirou/social-game-rewards-backend/blob/e3f237f2642c299aacf412c433aaf90b6acb0344/LICENSE",
   "bugs": {
     "url": "https://github.com/kjirou/social-game-rewards-backend/issues"
   },
-  "homepage": "https://github.com/kjirou/social-game-rewards-backend#readme"
+  "homepage": "https://github.com/kjirou/social-game-rewards-backend#readme",
+  "private": true
 }
