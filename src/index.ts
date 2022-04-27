@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server'
+import { Game } from './generated/graphql'
 
 // TODO: .graphql ファイルへ切り出す。
 const typeDefs = gql`
@@ -12,13 +13,6 @@ const typeDefs = gql`
     findGames: [Game]
   }
 `
-
-// TODO: GraphQL の型から生成する。
-type Game = {
-  id: string,
-  name: string,
-  url: string,
-}
 
 const games: Game[] = [
   {
