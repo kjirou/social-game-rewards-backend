@@ -1,18 +1,8 @@
-import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServer } from 'apollo-server'
+
+import gameTypeDefs from './schemas/game'
+import queryTypeDefs from './schemas/query'
 import { Game } from './generated/graphql'
-
-// TODO: .graphql ファイルへ切り出す。
-const typeDefs = gql`
-  type Game {
-    id: ID!
-    name: String!
-    url: String!
-  }
-
-  type Query {
-    findGames: [Game]
-  }
-`
 
 const games: Game[] = [
   {
@@ -39,7 +29,10 @@ const resolvers = {
   },
 }
 
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({
+  typeDefs: [gameTypeDefs, queryTypeDefs],
+  resolvers,
+})
 
 server.listen().then(({ url }) => {
   console.log(`The apollo server is running at ${url}.`);
