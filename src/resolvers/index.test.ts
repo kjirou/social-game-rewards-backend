@@ -1,12 +1,11 @@
 import { ApolloServer } from 'apollo-server'
 
-import gameTypeDefs from '../schemas/game'
-import queryTypeDefs from '../schemas/query'
+import { typeDefsList } from '../schemas'
 import { resolvers } from './index'
 
 const createTestServer = () => {
   return new ApolloServer({
-    typeDefs: [gameTypeDefs, queryTypeDefs],
+    typeDefs: typeDefsList,
     resolvers
   });
 }
