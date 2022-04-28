@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server'
 
 import gameTypeDefs from './schemas/game'
 import queryTypeDefs from './schemas/query'
-import { Game } from './generated/graphql'
+import { Game, Resolvers } from './generated/graphql'
 
 const games: Game[] = [
   {
@@ -22,8 +22,7 @@ const games: Game[] = [
   },
 ]
 
-// TODO: 型をつける。
-const resolvers = {
+const resolvers: Resolvers = {
   Query: {
     findGames: () => games,
   },
