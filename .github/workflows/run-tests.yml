@@ -1,9 +1,9 @@
-name: Run tests
+name: Run Tests
 on: [push]
 jobs:
   run-tests:
     runs-on: ubuntu-20.04
-    name: Run tests on Node.js v${{ matrix.node }}
+    name: On Node.js v${{ matrix.node }}
     strategy:
       matrix:
         node: [ '16', '18' ]
