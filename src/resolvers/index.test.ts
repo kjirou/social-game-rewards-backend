@@ -8,7 +8,7 @@ const createTestServer = () => {
     typeDefs: typeDefsList,
     context: resolverContext,
     resolvers,
-  });
+  })
 }
 
 describe('Query', () => {
@@ -17,8 +17,8 @@ describe('Query', () => {
       const server = createTestServer()
       const result = await server.executeOperation({
         query: 'query { findGames { id } }',
-      });
-      expect(result.data?.findGames.length).toBeGreaterThanOrEqual(1);
+      })
+      expect(result.data?.findGames.length).toBeGreaterThanOrEqual(1)
     })
   })
 })
