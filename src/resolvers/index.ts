@@ -2,7 +2,7 @@ import { StaticDataSources, staticDataSources } from '../data-sources'
 import { Resolvers } from '../generated/graphql'
 
 type ResolverContext = {
-  readonly staticDataSources: StaticDataSources,
+  readonly staticDataSources: StaticDataSources
 }
 
 export const resolverContext: ResolverContext = {
