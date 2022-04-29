@@ -1,12 +1,13 @@
 import { ApolloServer } from 'apollo-server'
 
 import { typeDefsList } from '../schemas'
-import { resolvers } from './index'
+import { resolverContext, resolvers } from './index'
 
 const createTestServer = () => {
   return new ApolloServer({
     typeDefs: typeDefsList,
-    resolvers
+    context: resolverContext,
+    resolvers,
   });
 }
 
