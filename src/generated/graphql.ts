@@ -22,7 +22,7 @@ export type Game = {
 
 export type Query = {
   __typename?: 'Query';
-  findGames?: Maybe<Array<Maybe<Game>>>;
+  findGames?: Maybe<Array<Game>>;
 };
 
 
@@ -118,7 +118,7 @@ export type GameResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  findGames?: Resolver<Maybe<Array<Maybe<ResolversTypes['Game']>>>, ParentType, ContextType>;
+  findGames?: Resolver<Maybe<Array<ResolversTypes['Game']>>, ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
