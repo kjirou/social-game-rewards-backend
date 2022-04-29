@@ -7,7 +7,9 @@
     "build": "tsc",
     "dev": "ts-node-dev --respawn src/index.ts",
     "generate": "graphql-codegen --config codegen.yml",
-    "test": "jest"
+    "test": "npm run test:local",
+    "test:ci": "npm run test:local -- --runInBand --verbose",
+    "test:local": "jest"
   },
   "repository": {
     "type": "git",
