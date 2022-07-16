@@ -25,3 +25,22 @@ FROM base AS local
 ENV NODE_ENV=development
 
 EXPOSE 4000
+
+
+#
+# CI
+#
+FROM base AS ci
+
+ENV NODE_ENV=development
+
+COPY --chown=appuser:appgroup package.json package-lock.json .
+RUN npm ci
+
+COPY --chown=appuser:appgroup \
+    .prettierignore \
+    .prettierrc.json \
+    jest.config.js \
+    tsconfig.json \
+    .
+COPY --chown=appuser:appgroup src src
