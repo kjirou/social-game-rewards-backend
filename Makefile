@@ -16,6 +16,14 @@ docker/ci/build:
 			--progress=tty \
 			.
 
+docker/ci/analyze-code:
+	docker run \
+		--name sgr_run_analyze_code \
+		--rm \
+		--tty \
+		sgr_ci \
+		npm run prettier:check
+
 docker/ci/test:
 	docker run \
 		--name sgr_run_ci \
