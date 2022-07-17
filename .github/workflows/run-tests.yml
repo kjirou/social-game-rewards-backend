@@ -18,8 +18,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - run: docker pull kjirou/sgr_ci
       - run: docker tag kjirou/sgr_ci sgr_ci
-      -
-        run: make docker/ci/build
+      # -
+      #   run: make docker/ci/build
       -
         run: docker image ls
       -
