@@ -16,7 +16,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: docker pull kjirou/scr_ci
+      - run: docker pull kjirou/sgr_ci
       -
         run: make docker/ci/build
       -
