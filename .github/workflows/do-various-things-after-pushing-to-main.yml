@@ -2,7 +2,7 @@ name: Do Various Things After Pushing To Main
 on:
   push:
     branches:
-      - 'main'
+      - 'use_docker_build_and_push'
 jobs:
   save-ci-image:
     runs-on: ubuntu-20.04
