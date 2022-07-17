@@ -2,7 +2,7 @@ name: Do Various Things After Pushing To Main
 on:
   push:
     branches:
-      - 'save_images_after_pushed_to_main'
+      - 'main'
 jobs:
   save-ci-image:
     runs-on: ubuntu-20.04
