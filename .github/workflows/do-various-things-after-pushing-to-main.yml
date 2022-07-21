@@ -15,7 +15,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: make docker/ci/build
+      -
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: kjirou/sgrb:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - run: docker image ls
-      - run: docker tag sgr_ci:latest kjirou/sgr_ci
-      - run: docker push kjirou/sgr_ci:latest
