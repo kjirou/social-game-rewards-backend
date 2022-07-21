@@ -17,6 +17,5 @@ jobs:
           load: true
           tags: sgrb:latest
           cache-from: type=gha
-      - run: docker tag sgrb sgr_ci
       - run: docker image ls
       - run: make docker/ci/analyze-code
