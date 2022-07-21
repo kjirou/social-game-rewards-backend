@@ -19,6 +19,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           tags: kjirou/sgrb:latest
-          cache-from: type=gha
           cache-to: type=gha,mode=max
       - run: docker image ls
