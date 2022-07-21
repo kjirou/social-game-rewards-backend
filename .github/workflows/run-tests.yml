@@ -12,8 +12,17 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
-        run: make docker/ci/build
-      -
-        run: docker image ls
-      -
-        run: make docker/ci/test
+        uses: docker/build-push-action@v3
+        with:
+          load: true
+          tags: sgrb:latest
+          cache-from: type=gha
+          # type=gha の設定のときは、GitHub Actions の Cache へ image を保存する。
+          # Cache はリポジトリに対して 10GB まで保存できる。超えた分は退去されるとのことで、具体的な処理は不明。
+          # ファイルが壊れて cache の restore が失敗することは、もしかしたらあるかもしれない。
+          #
+          # GitHub Actions: Cache の公式ドキュメント)
+          # https://docs.github.com/ja/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+          cache-to: type=gha,mode=max
+      - run: docker image ls
+      - run: make docker/ci/test
