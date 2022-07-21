@@ -8,14 +8,6 @@ DOCKER_LOCAL_RUN_BINDS := \
 	--mount type=bind,source=$(PROJECT_ROOT)/src,target=$(DOCKER_WORKDIR)/src,readonly \
 	--mount type=bind,source=$(PROJECT_ROOT)/tsconfig.json,target=$(DOCKER_WORKDIR)/tsconfig.json,readonly
 
-docker/ci/build:
-	DOCKER_BUILDKIT=1 \
-		docker build \
-			--tag sgr_ci \
-			--target ci \
-			--progress=tty \
-			.
-
 docker/ci/analyze-code:
 	docker run \
 		--name sgr_run_analyze_code \
