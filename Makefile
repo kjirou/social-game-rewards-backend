@@ -28,7 +28,6 @@ docker/ci/test:
 	docker run \
 		--name sgr_run_ci \
 		--rm \
-		--tty \
 		sgr_ci \
 		npm run test:ci
 
