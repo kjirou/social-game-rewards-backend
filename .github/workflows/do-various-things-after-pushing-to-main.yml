@@ -20,4 +20,6 @@ jobs:
         with:
           push: true
           tags: kjirou/sgrb:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - run: docker image ls
