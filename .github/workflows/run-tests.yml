@@ -12,8 +12,11 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
-        run: make docker/ci/build
-      -
-        run: docker image ls
-      -
-        run: make docker/ci/test
+        uses: docker/build-push-action@v3
+        with:
+          load: true
+          tags: sgrb:latest
+          cache-from: type=gha
+      - run: docker tag sgrb sgr_ci
+      - run: docker image ls
+      - run: make docker/ci/test
