@@ -33,7 +33,7 @@ docker/local/build:
 
 docker/local/command:
 	docker run $(DOCKER_LOCAL_RUN_BINDS) \
-		--name sgrb_local_run \
+		--name sgrb_local_command \
 		--rm \
 		--tty \
 		sgrb_local \
@@ -49,7 +49,7 @@ docker/local/console:
 
 docker/local/dev:
 	docker run $(DOCKER_LOCAL_RUN_BINDS) \
-		--name sgrb_local_run \
+		--name sgrb_local_dev \
 		--publish 4000:4000 \
 		--rm \
 		--tty \
@@ -57,4 +57,4 @@ docker/local/dev:
 		npm run dev
 
 docker/local/stop:
-	docker stop sgrb_local_run
+	docker stop sgrb_local_dev
