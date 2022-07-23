@@ -1,0 +1,59 @@
+name: Run Tests And Analyze Code
+on: [push]
+jobs:
+  save-docker-image-as-artifact:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        uses: docker/build-push-action@v3
+        with:
+          load: true
+          tags: sgrb:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - run: docker image ls
+      - run: docker save sgrb > /tmp/docker-image-sgrb.tar
+      -
+        uses: actions/upload-artifact@v2
+        with:
+          name: docker-image-sgrb
+          path: /tmp/docker-image-sgrb.tar
+  run-tests:
+    needs: save-docker-image-as-artifact
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/setup-qemu-action@v2
+      - uses: docker/setup-buildx-action@v2
+      -
+        uses: actions/download-artifact@v3
+        with:
+          name: docker-image-sgrb
+          path: /tmp
+      - run: ls -lAF /tmp
+      - run: docker load < /tmp/docker-image-sgrb.tar
+      - run: docker image ls
+      - run: make docker/ci/test
+  analyze-code:
+    needs: save-docker-image-as-artifact
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/setup-qemu-action@v2
+      - uses: docker/setup-buildx-action@v2
+      -
+        uses: actions/download-artifact@v3
+        with:
+          name: docker-image-sgrb
+          path: /tmp
+      - run: ls -lAF /tmp
+      - run: docker load < /tmp/docker-image-sgrb.tar
+      - run: docker image ls
+      - run: make docker/ci/analyze-code
