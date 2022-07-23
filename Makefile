@@ -10,7 +10,7 @@ DOCKER_LOCAL_RUN_BINDS := \
 
 docker/ci/analyze-code:
 	docker run \
-		--name sgr_run_analyze_code \
+		--name sgrb_ci_analyze_code \
 		--rm \
 		--tty \
 		sgrb_ci \
@@ -18,7 +18,7 @@ docker/ci/analyze-code:
 
 docker/ci/test:
 	docker run \
-		--name sgr_run_ci \
+		--name sgrb_ci_test \
 		--rm \
 		sgrb_ci \
 		npm run test:ci
