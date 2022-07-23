@@ -11,7 +11,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           load: true
-          tags: sgrb:latest
+          target: ci
+          tags: sgrb_ci:latest
           cache-from: type=gha
           # type=gha の設定のときは、GitHub Actions の Cache へ image を保存する。
           # Cache はリポジトリに対して 10GB まで保存できる。超えた分は退去されるとのことで、具体的な処理は不明。

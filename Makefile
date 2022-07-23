@@ -10,51 +10,51 @@ DOCKER_LOCAL_RUN_BINDS := \
 
 docker/ci/analyze-code:
 	docker run \
-		--name sgr_run_analyze_code \
+		--name sgrb_ci_analyze_code \
 		--rm \
 		--tty \
-		sgrb \
+		sgrb_ci \
 		npm run prettier:check
 
 docker/ci/test:
 	docker run \
-		--name sgr_run_ci \
+		--name sgrb_ci_test \
 		--rm \
-		sgrb \
+		sgrb_ci \
 		npm run test:ci
 
 docker/local/build:
 	DOCKER_BUILDKIT=1 \
 		docker build \
-			--tag sgr_local \
+			--tag sgrb_local \
 			--target local \
 			--progress=tty \
 			.
+
+docker/local/command:
+	docker run $(DOCKER_LOCAL_RUN_BINDS) \
+		--name sgrb_local_command \
+		--rm \
+		--tty \
+		sgrb_local \
+		$(ARG)
 
 docker/local/console:
 	docker run \
 		--interactive \
 		--rm \
 		--tty \
-		sgr_local \
+		sgrb_local \
 		/bin/bash
 
 docker/local/dev:
 	docker run $(DOCKER_LOCAL_RUN_BINDS) \
-		--name sgr_local_run \
+		--name sgrb_local_dev \
 		--publish 4000:4000 \
 		--rm \
 		--tty \
-		sgr_local \
+		sgrb_local \
 		npm run dev
 
-docker/local/test:
-	docker run $(DOCKER_LOCAL_RUN_BINDS) \
-		--name sgr_local_run \
-		--rm \
-		--tty \
-		sgr_local \
-		npm run test:local -- $(ARG)
-
 docker/local/stop:
-	docker stop sgr_local_run
+	docker stop sgrb_local_dev
