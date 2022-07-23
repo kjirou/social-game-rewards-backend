@@ -26,7 +26,7 @@ docker/ci/test:
 docker/local/build:
 	DOCKER_BUILDKIT=1 \
 		docker build \
-			--tag sgr_local \
+			--tag sgrb_local \
 			--target local \
 			--progress=tty \
 			.
@@ -36,25 +36,25 @@ docker/local/console:
 		--interactive \
 		--rm \
 		--tty \
-		sgr_local \
+		sgrb_local \
 		/bin/bash
 
 docker/local/dev:
 	docker run $(DOCKER_LOCAL_RUN_BINDS) \
-		--name sgr_local_run \
+		--name sgrb_local_run \
 		--publish 4000:4000 \
 		--rm \
 		--tty \
-		sgr_local \
+		sgrb_local \
 		npm run dev
 
 docker/local/test:
 	docker run $(DOCKER_LOCAL_RUN_BINDS) \
-		--name sgr_local_run \
+		--name sgrb_local_run \
 		--rm \
 		--tty \
-		sgr_local \
+		sgrb_local \
 		npm run test:local -- $(ARG)
 
 docker/local/stop:
-	docker stop sgr_local_run
+	docker stop sgrb_local_run
