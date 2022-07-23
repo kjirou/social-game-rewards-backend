@@ -13,14 +13,14 @@ docker/ci/analyze-code:
 		--name sgr_run_analyze_code \
 		--rm \
 		--tty \
-		sgrb \
+		sgrb_ci \
 		npm run prettier:check
 
 docker/ci/test:
 	docker run \
 		--name sgr_run_ci \
 		--rm \
-		sgrb \
+		sgrb_ci \
 		npm run test:ci
 
 docker/local/build:
