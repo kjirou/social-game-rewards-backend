@@ -1,7 +1,7 @@
 #
 # Base
 #
-FROM node:16.15.0-slim AS base
+FROM node:16.16.0-slim AS base
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
