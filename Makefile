@@ -31,6 +31,14 @@ docker/local/build:
 			--progress=tty \
 			.
 
+docker/local/command:
+	docker run $(DOCKER_LOCAL_RUN_BINDS) \
+		--name sgrb_local_run \
+		--rm \
+		--tty \
+		sgrb_local \
+		$(ARG)
+
 docker/local/console:
 	docker run \
 		--interactive \
@@ -47,14 +55,6 @@ docker/local/dev:
 		--tty \
 		sgrb_local \
 		npm run dev
-
-docker/local/test:
-	docker run $(DOCKER_LOCAL_RUN_BINDS) \
-		--name sgrb_local_run \
-		--rm \
-		--tty \
-		sgrb_local \
-		npm run test:local -- $(ARG)
 
 docker/local/stop:
 	docker stop sgrb_local_run
