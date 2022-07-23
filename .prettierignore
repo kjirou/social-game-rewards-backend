@@ -1,2 +1,4 @@
+# NOTE: CI で検証するためには Docker image へ含める必要がある。重要度は低いので、 image 管理の容易さを優先する。
+/.github/workflows/
 /graphql.schema.json
 /src/generated/
